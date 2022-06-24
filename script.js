@@ -10,7 +10,7 @@ function computerPlay() {
   return CHOICES[number];
 }
 
-let buttons = document.querySelectorAll("button.choice");
+const buttons = document.querySelectorAll("button.choice");
 
 buttons.forEach((button) => {
   button.addEventListener("click", (button) => {
@@ -19,13 +19,31 @@ buttons.forEach((button) => {
   });
 });
 
-let results = document.querySelector("#results p");
-let info = document.querySelector("#info p");
+const newGame = document.querySelector("button.reset");
+newGame.addEventListener("click", () => {
+  playerScore = 0;
+  computerScore = 0;
+
+  for (const button of buttons) {
+    console.log(button);
+    button.disabled = false;
+  }
+
+  results.textContent = "---";
+
+  playerScoreDisplay.textContent = "0";
+  computerScoreDisplay.textContent = "0";
+});
+
+const results = document.querySelector("#results p");
+const info = document.querySelector("#info p");
+const playerScoreDisplay = document.querySelector("p.pscore");
+const computerScoreDisplay = document.querySelector("p.cscore");
 
 function playRound() {
-  info.textContent = "The player's choice was: " + playerSelection;
   computerSelection = computerPlay();
-  info.textContent = "The computer's choice was: " + computerSelection;
+  info.textContent = `The player's choice was: ${playerSelection}
+  \nThe computer's choice was: ${computerSelection}`;
 
   if (playerSelection === computerSelection) {
     results.textContent = "⚔ It's a tie! ⚔";
@@ -37,6 +55,7 @@ function playRound() {
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
     ++playerScore;
+    playerScoreDisplay.textContent = `${playerScore}`;
     results.textContent = `🎉 You win! ${playerSelection} beats ${computerSelection} 🎉`;
     results.style.cssText =
       "background-color: #1F1F1F; border-radius: 5px; color: #7FE500; font-size: 16px; font-weight: 900";
@@ -46,15 +65,23 @@ function playRound() {
     (playerSelection === "paper" && computerSelection === "scissors")
   ) {
     ++computerScore;
+    computerScoreDisplay.textContent = `${computerScore}`;
     results.textContent = `💥 You lose! ${computerSelection} beats ${playerSelection} 💥`;
     results.style.cssText =
       "background-color: #1F1F1F; border-radius: 5px; color: #cd2c00; font-size: 16px; font-weight: 900";
   } else {
     results.textContent =
       "Invalid user input. Please make sure to type a valid choice!";
-    console.log("Invalid user input. Please make sure to type a valid choice!");
   }
-  console.log("+-------------------+");
+
+  if (playerScore === 5 || computerScore === 5) {
+    for (const button of buttons) {
+      button.disabled = true;
+    }
+    results.style.cssText =
+      "background-color: #1F1F1F; border-radius: 5px; color: #fff; font-size: 20px; font-weight: 900";
+    results.textContent = `${playerScore === 5 ? "YOU WIN" : "ULTIMATE LOSER"}`;
+  }
 }
 
 // function game() {
