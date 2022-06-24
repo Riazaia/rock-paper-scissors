@@ -24,17 +24,13 @@ let info = document.querySelector("#info p");
 
 function playRound() {
   info.textContent = "The player's choice was: " + playerSelection;
-  console.log("The player's choice was: " + playerSelection);
   computerSelection = computerPlay();
   info.textContent = "The computer's choice was: " + computerSelection;
-  console.log("The computer's choice was: " + computerSelection);
 
   if (playerSelection === computerSelection) {
     results.textContent = "⚔ It's a tie! ⚔";
-    console.log(
-      "%c ⚔ It's a tie! ⚔ ",
-      "background-color: #1F1F1F; border-radius: 5px; color: #EEAE00; font-size: 16px; font-weight: 900"
-    );
+    results.style.cssText =
+      "background-color: #1F1F1F; border-radius: 5px; color: #EEAE00; font-size: 16px; font-weight: 900";
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
@@ -42,10 +38,8 @@ function playRound() {
   ) {
     ++playerScore;
     results.textContent = `🎉 You win! ${playerSelection} beats ${computerSelection} 🎉`;
-    console.log(
-      `%c 🎉 You win! ${playerSelection} beats ${computerSelection} 🎉 `,
-      "background-color: #1F1F1F; border-radius: 5px; color: #7FE500; font-size: 16px; font-weight: 900"
-    );
+    results.style.cssText =
+      "background-color: #1F1F1F; border-radius: 5px; color: #7FE500; font-size: 16px; font-weight: 900";
   } else if (
     (playerSelection === "rock" && computerSelection === "paper") ||
     (playerSelection === "scissors" && computerSelection === "rock") ||
@@ -53,10 +47,8 @@ function playRound() {
   ) {
     ++computerScore;
     results.textContent = `💥 You lose! ${computerSelection} beats ${playerSelection} 💥`;
-    console.log(
-      `%c 💥 You lose! ${computerSelection} beats ${playerSelection} 💥 `,
-      "background-color: #1F1F1F; border-radius: 5px; color: #cd2c00; font-size: 16px; font-weight: 900"
-    );
+    results.style.cssText =
+      "background-color: #1F1F1F; border-radius: 5px; color: #cd2c00; font-size: 16px; font-weight: 900";
   } else {
     results.textContent =
       "Invalid user input. Please make sure to type a valid choice!";
