@@ -10,11 +10,11 @@ function computerPlay() {
   return CHOICES[number];
 }
 
-const buttons = document.querySelectorAll("button.choice");
+const buttons = document.querySelectorAll(".choices button");
 
 buttons.forEach((button) => {
-  button.addEventListener("click", (button) => {
-    playerSelection = button.target.id;
+  button.addEventListener("click", (event) => {
+    playerSelection = event.target.className;
     playRound();
   });
 });
@@ -43,15 +43,19 @@ const computerScoreDisplay = document.querySelector("p.cscore");
 
 function playRound() {
   computerSelection = computerPlay();
-  playerInfo.textContent = `${
-    playerSelection === "rock" ? "🗿" : playerSelection === "paper" ? "📃" : "✂"
+  playerInfo.innerHTML = `${
+    playerSelection === "rock"
+      ? '<img src="/assets/rock.png" />'
+      : playerSelection === "paper"
+      ? '<img src="/assets/grass.png" />'
+      : '<img src="/assets/scythe.png" />'
   }`;
-  pcInfo.textContent = `${
+  pcInfo.innerHTML = `${
     computerSelection === "rock"
-      ? "🗿"
+      ? '<img src="/assets/rock.png" />'
       : computerSelection === "paper"
-      ? "📃"
-      : "✂"
+      ? '<img src="/assets/grass.png" />'
+      : '<img src="/assets/scythe.png" />'
   }`;
 
   if (playerSelection === computerSelection) {

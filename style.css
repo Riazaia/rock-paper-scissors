@@ -20,6 +20,8 @@ body {
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
+  background-image: url("assets/stardew-bg.png");
+  background-size: cover;
 }
 
 main {
@@ -70,12 +72,31 @@ button {
   margin: 6px 10px;
   height: 80%;
   width: 80%;
+  background-color: #fdbc6e;
+  background: linear-gradient(
+    to bottom,
+    #ffc576 25%,
+    #fdbc6e 25% 50%,
+    #f5b56f 50% 75%,
+    #ecac66 75%
+  );
+  border: 16px groove #fa9305;
+  border-radius: 16px;
+  border-image: url("/assets/border.png") 30% fill;
 }
 
-.choice {
-  width: 30%;
+button:hover {
+  border-image: url("/assets/border-highlight.png") 30% fill;
 }
-
 footer {
   font-size: 0.75rem;
+}
+.choices button {
+  width: 100px;
+  height: 100px;
+}
+
+img {
+  image-rendering: pixelated;
+  width: 48px;
 }
