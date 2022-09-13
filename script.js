@@ -45,17 +45,17 @@ function playRound() {
   computerSelection = computerPlay();
   playerInfo.innerHTML = `${
     playerSelection === "rock"
-      ? '<img src="/assets/rock.png" />'
+      ? '<img src="./assets/rock.png" />'
       : playerSelection === "paper"
-      ? '<img src="/assets/grass.png" />'
-      : '<img src="/assets/scythe.png" />'
+      ? '<img src="./assets/grass.png" />'
+      : '<img src="./assets/scythe.png" />'
   }`;
   pcInfo.innerHTML = `${
     computerSelection === "rock"
-      ? '<img src="/assets/rock.png" />'
+      ? '<img src="./assets/rock.png" />'
       : computerSelection === "paper"
-      ? '<img src="/assets/grass.png" />'
-      : '<img src="/assets/scythe.png" />'
+      ? '<img src="./assets/grass.png" />'
+      : '<img src="./assets/scythe.png" />'
   }`;
 
   if (playerSelection === computerSelection) {

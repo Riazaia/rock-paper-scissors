@@ -20,7 +20,7 @@ body {
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
-  background-image: url("assets/stardew-bg.png");
+  background-image: url("./assets/stardew-bg.png");
   background-size: cover;
 }
 
@@ -82,11 +82,11 @@ button {
   );
   border: 16px groove #fa9305;
   border-radius: 16px;
-  border-image: url("/assets/border.png") 30% fill;
+  border-image: url("./assets/border.png") 30% fill;
 }
 
 button:hover {
-  border-image: url("/assets/border-highlight.png") 30% fill;
+  border-image: url("./assets/border-highlight.png") 30% fill;
 }
 footer {
   font-size: 0.75rem;
